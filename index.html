@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Calculator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f2f2f2;
+        }
+
+        .calculator{
+            width: 90%;
+            max-width: 320px;
+            background-color: black;
+            padding: 15px;
+            box-shadow: 5px 5px 10px red;
+            border: 2px solid red;
+            border-radius: 20px;
+        }
+
+        input{
+            width: 100%;
+            height: 70px;
+            margin-bottom: 15px;
+            border: 2px solid red;
+            box-shadow: 2px 2px 10px red;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .col-3{
+            background-color: red;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+
+        .col-3:hover{
+            background-color: white;
+            color: red;
+            box-shadow: 2px 2px 10px white;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <input type="text" placeholder="0" id="display" readonly>
+
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-3" onclick="appendValue('7')">7</div>
+            <div class="col-3" onclick="appendValue('8')">8</div>
+            <div class="col-3" onclick="appendValue('9')">9</div>
+            <div class="col-3" onclick="appendValue('+')">+</div>
+        </div>
+
+        <div class="row g-2 mt-2">
+            <div class="col-3" onclick="appendValue('6')">6</div>
+            <div class="col-3" onclick="appendValue('5')">5</div>
+            <div class="col-3" onclick="appendValue('4')">4</div>
+            <div class="col-3" onclick="appendValue('-')">-</div>
+        </div>
+
+        <div class="row g-2 mt-2">
+            <div class="col-3" onclick="appendValue('3')">3</div>
+            <div class="col-3" onclick="appendValue('2')">2</div>
+            <div class="col-3" onclick="appendValue('1')">1</div>
+            <div class="col-3" onclick="appendValue('*')">*</div>
+        </div>
+
+        <div class="row g-2 mt-2">
+            <div class="col-3" onclick="clearDisplay()">CE</div>
+            <div class="col-3" onclick="calculate()">=</div>
+            <div class="col-3" onclick="appendValue('0')">0</div>
+            <div class="col-3" onclick="appendValue('/')">/</div>
+        </div>
+    </div>
+</div>
+
+<script>
+function appendValue(value) {
+    document.getElementById("display").value += value;
+}
+
+function clearDisplay() {
+    document.getElementById("display").value = "";
+}
+
+function calculate() {
+    let result = document.getElementById("display").value;
+    document.getElementById("display").value = eval(result);
+}
+</script>
+
+</body>
+</html>
