@@ -8,17 +8,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        body{
-            min-height: 100vh;
+        body {
+            margin: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #f2f2f2;
+            background: #f5f5f5;
+            font-family: Arial, sans-serif;
         }
 
-        .calculator{
-            width: 90%;
-            max-width: 320px;
+        .app-container {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            gap: 40px;
+        }
+
+        h1 {
+            font-weight: bold;
+            box-shadow: 2px 2px 10px red;
+            padding: 10px 20px;
+        }
+
+        .calculator {
+            width: 320px;
             background-color: black;
             padding: 15px;
             box-shadow: 5px 5px 10px red;
@@ -26,7 +40,7 @@
             border-radius: 20px;
         }
 
-        input{
+        input {
             width: 100%;
             height: 70px;
             margin-bottom: 15px;
@@ -38,7 +52,7 @@
             padding-right: 10px;
         }
 
-        .col-3{
+        .col-3 {
             background-color: red;
             color: white;
             font-size: 1.1rem;
@@ -52,64 +66,64 @@
             cursor: pointer;
         }
 
-        .col-3:hover{
+        .col-3:hover {
             background-color: white;
             color: red;
             box-shadow: 2px 2px 10px white;
             border: 1px solid red;
-        }
-        h1{
-            font-weight:bold;
-            box-shadow: 2px 2px 10px red;
         }
     </style>
 </head>
 
 <body>
 
-    <h1 class="text-center">CALCULATOR APP</h1>
+<div class="app-container">
+    <h1>Calculator App</h1>
 
-<div class="calculator">
-    <input type="text" placeholder="0" id="display" readonly>
+    <div class="calculator">
+        <input type="text" id="display" value="0" readonly>
 
-    <div class="container">
-        <div class="row g-2">
-            <div class="col-3" onclick="appendValue('7')">7</div>
-            <div class="col-3" onclick="appendValue('8')">8</div>
-            <div class="col-3" onclick="appendValue('9')">9</div>
-            <div class="col-3" onclick="appendValue('+')">+</div>
-        </div>
+        <div class="container">
+            <div class="row g-2">
+                <div class="col-3" onclick="appendValue('7')">7</div>
+                <div class="col-3" onclick="appendValue('8')">8</div>
+                <div class="col-3" onclick="appendValue('9')">9</div>
+                <div class="col-3" onclick="appendValue('+')">+</div>
+            </div>
 
-        <div class="row g-2 mt-2">
-            <div class="col-3" onclick="appendValue('6')">6</div>
-            <div class="col-3" onclick="appendValue('5')">5</div>
-            <div class="col-3" onclick="appendValue('4')">4</div>
-            <div class="col-3" onclick="appendValue('-')">-</div>
-        </div>
+            <div class="row g-2 mt-2">
+                <div class="col-3" onclick="appendValue('6')">6</div>
+                <div class="col-3" onclick="appendValue('5')">5</div>
+                <div class="col-3" onclick="appendValue('4')">4</div>
+                <div class="col-3" onclick="appendValue('-')">-</div>
+            </div>
 
-        <div class="row g-2 mt-2">
-            <div class="col-3" onclick="appendValue('3')">3</div>
-            <div class="col-3" onclick="appendValue('2')">2</div>
-            <div class="col-3" onclick="appendValue('1')">1</div>
-            <div class="col-3" onclick="appendValue('*')">*</div>
-        </div>
+            <div class="row g-2 mt-2">
+                <div class="col-3" onclick="appendValue('3')">3</div>
+                <div class="col-3" onclick="appendValue('2')">2</div>
+                <div class="col-3" onclick="appendValue('1')">1</div>
+                <div class="col-3" onclick="appendValue('*')">*</div>
+            </div>
 
-        <div class="row g-2 mt-2">
-            <div class="col-3" onclick="clearDisplay()">CE</div>
-            <div class="col-3" onclick="calculate()">=</div>
-            <div class="col-3" onclick="appendValue('0')">0</div>
-            <div class="col-3" onclick="appendValue('/')">/</div>
+            <div class="row g-2 mt-2">
+                <div class="col-3" onclick="clearDisplay()">CE</div>
+                <div class="col-3" onclick="calculate()">=</div>
+                <div class="col-3" onclick="appendValue('0')">0</div>
+                <div class="col-3" onclick="appendValue('/')">/</div>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
 function appendValue(value) {
-    document.getElementById("display").value += value;
+    let display = document.getElementById("display");
+    if (display.value === "0") display.value = "";
+    display.value += value;
 }
 
 function clearDisplay() {
-    document.getElementById("display").value = "";
+    document.getElementById("display").value = "0";
 }
 
 function calculate() {
@@ -120,5 +134,3 @@ function calculate() {
 
 </body>
 </html>
-
-
